@@ -38,10 +38,9 @@ export default class Level1 extends Phaser.Scene{
         }
         PauseHud.setLevel(1);
         this.scene.setVisible(true,"Level1");
-        this.player= new Player({ scene: this, x: 100, y: 455, key: "player" });
-        this.posX=100;
-        this.posY=455;
-        this.lives=3;
+        this.player= new Player({ scene: this, x: 55, y: 45, key: "player" });
+        this.posX=53;
+        this.posY=45;
         this.physics.add.existing(this.player);
         this.music=this.sound.add("music0",{loop:true,volume:.3});
         this.music.play();
