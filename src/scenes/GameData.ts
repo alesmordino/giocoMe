@@ -18,8 +18,8 @@ export let GameData: any = {
     {
     name: "player",
     path: "assets/images/player.png",
-    width: 454, 
-    height: 669,
+    width: 58, 
+    height: 529,
     frames: 3
     },{
       name: "tilemap-extruded",
@@ -43,7 +43,6 @@ export let GameData: any = {
     { name: "esci", path: "assets/images/esci.png" },
     { name: "1", path: "assets/images/1.png" },
     { name: "x", path: "assets/images/x.png" },
-    { name: "grotta", path: "assets/map/toppa.png" },
     { name: "credits", path: "assets/images/credits.png" },
     { name: "comeGiocare", path: "assets/images/comegiocare.png" },
     { name: "youwin", path: "assets/images/youwin.png" }

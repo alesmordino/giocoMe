@@ -20,8 +20,8 @@ export default class Player extends Phaser.GameObjects.Sprite implements IPlayer
 
 	//array di oggetti per la creazione dell’animazione
 	private _animations: Array<{ key: string, frames: Array<number>, frameRate: number, yoyo: boolean, repeat: number }> = [
-	{ key: "move", frames: [0, 1, 2,3,4,5,6,7], frameRate: 10, yoyo: false, repeat: -1 },
-	{ key: "idle", frames: [8,9,10,11,12,13], frameRate: 10, yoyo: false, repeat: -1 }
+	{ key: "move", frames: [0, 1, 2,3,4,5,6,7,8,9], frameRate: 10, yoyo: false, repeat: -1 },
+	{ key: "idle", frames: [0], frameRate: 1, yoyo: false, repeat: -1 }
 	];
 
     public right:boolean;
@@ -52,7 +52,7 @@ export default class Player extends Phaser.GameObjects.Sprite implements IPlayer
                 this._body.setCollideWorldBounds(true);
             
                 // Imposta le dimensioni e l'offset del corpo del giocatore
-                this._body.setSize(43, 67);
+                this._body.setSize(32, 60);
                 this._body.setOffset(0, 0);
             
                 // Crea i tasti cursore per il movimento
@@ -64,7 +64,7 @@ export default class Player extends Phaser.GameObjects.Sprite implements IPlayer
                 this._scene.add.existing(this);
             
                 // Imposta altre proprietà del giocatore
-                this.setDepth(10).setScale(0.9);
+                this.setDepth(10).setScale(0.85);
                 this.pause = false;
             
                 // Crea le animazioni per il giocatore
