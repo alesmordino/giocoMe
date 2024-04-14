@@ -43,7 +43,7 @@ export default class Level1 extends Phaser.Scene{
         this.posY=455;
         this.lives=3;
         this.physics.add.existing(this.player);
-        this.music=this.sound.add("music1",{loop:true,volume:.3});
+        this.music=this.sound.add("music0",{loop:true,volume:.3});
         this.music.play();
         this.map = this.make.tilemap({ key: "level-1"});
         //this.bg=this.add.image(0, 0,"bg1").setOrigin(0,0).setDepth(2);
