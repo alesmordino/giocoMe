@@ -4,6 +4,7 @@ import Keypad from "./keypad";
 export default class Level1 extends Phaser.Scene {
     private mainCam: Phaser.Cameras.Scene2D.Camera;
     private player: Player;
+    private log :Phaser.GameObjects.Image;
     private music: Phaser.Sound.BaseSound;
     public static completed: boolean;
     private map: Phaser.Tilemaps.Tilemap;
@@ -66,6 +67,7 @@ export default class Level1 extends Phaser.Scene {
 
     create() {
         console.log("create:Level1");
+        this.add.image(1024, 0, "log").setOrigin(1, 0).setDepth(14).setScale(0.3).setAlpha(1);
     }
 
     createCollider() {
