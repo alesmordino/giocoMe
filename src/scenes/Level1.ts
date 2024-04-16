@@ -67,7 +67,7 @@ export default class Level1 extends Phaser.Scene {
 
     create() {
         console.log("create:Level1");
-        this.add.image(1024, 0, "log").setOrigin(1, 0).setDepth(14).setScale(0.3).setAlpha(1);
+        this.add.image(1024, 0, "log").setOrigin(1, 0).setDepth(14).setScale(0.3).setAlpha(1).setScrollFactor(0);
     }
 
     createCollider() {

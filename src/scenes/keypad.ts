@@ -61,5 +61,6 @@ export default class Keypad extends Phaser.Scene {
         }
         // Update the text to display currentNumber
         this.currentNumberText.setText(this.currentNumber);
+        
     }
 }
