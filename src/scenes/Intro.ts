@@ -11,15 +11,13 @@ export default class Intro extends Phaser.Scene {
     });
   }
 
-  preload() {
-  }
   create() {
     let bg=this.add.image(0, 0,"principale").setOrigin(0,0).setDepth(0).setDisplaySize(this.game.canvas.width, this.game.canvas.height).setInteractive().on("pointerdown",()=>{
       console.log("premi sulla porta per iniziare ");
       music.destroy();
       this.scene.start("Level1");
     });
-;
+
     let music: Phaser.Sound.BaseSound=this.sound.add("music0",{loop:true,volume:0.4});
     music.play();
     this.logo=this.add.image(this.game.canvas.width/2-9,130,"logo-game").setScale(0.85).setDepth(1);
@@ -37,24 +35,12 @@ export default class Intro extends Phaser.Scene {
 
   }
 
-  createCredits(){
-    this.creditsText.setInteractive(false);
-    let base:Phaser.GameObjects.Image=this.add.image(this.game.canvas.width/2,300,"credits").setOrigin(0.5,0.5).setDepth(12).setInteractive().on("pointerdown",()=>{
-      base.destroy();
-      this.creditsText.setInteractive(true);
-    });       
-  }
-
-  createHow(){
-    this.howToPlayText.setInteractive(false);
-    let base:Phaser.GameObjects.Image=this.add.image(this.game.canvas.width/2,300,"comeGiocare").setOrigin(0.5,0.5).setDepth(12).setInteractive().on("pointerdown",()=>{
-      base.destroy();
-      this.howToPlayText.setInteractive(true);
-    });       
-  }
 
   update(time: number, delta: number): void {
-
+    let bg=this.add.image(0, 0,"principale").setOrigin(0,0).setDepth(0).setDisplaySize(this.game.canvas.width, this.game.canvas.height).setInteractive().on("pointerdown",()=>{
+      console.log("premi sulla porta per iniziare ");
+      this.scene.start("Level1");
+    });
   }
 
 }

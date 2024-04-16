@@ -38,7 +38,6 @@ export default class Level1 extends Phaser.Scene {
             this.map.heightInPixels
         );
         this.mainCam.startFollow(this.player);
-
         this.physics.world.setBounds(
             0,
             0,
@@ -47,25 +46,20 @@ export default class Level1 extends Phaser.Scene {
         );
 
         this.tileset = this.map.addTilesetImage("tilemap-extruded");
-
         this.layer = this.map
             .createLayer("world", this.tileset, 0, 0)
             .setDepth(3)
             .setAlpha(1);
-
         this.layer2 = this.map
             .createLayer("collisions", this.tileset, 0, 0)
             .setDepth(1)
             .setAlpha(1);
-
         this.layerEnd = this.map
             .createLayer("end", this.tileset, 0, 0)
             .setDepth(1)
             .setAlpha(1);
-
         this.layer2.setCollisionByProperty({ collide: true });
         this.layerEnd.setCollisionByProperty({ collide: true });
-
         this.createCollider();
         this.scene.launch("Overlay");
     }
@@ -79,7 +73,6 @@ export default class Level1 extends Phaser.Scene {
         this.physics.add.collider(this.player, this.layer2, (_player: any, _tile: any) => {
             // Azioni quando il giocatore collide con il layer "collisions"
         }, undefined, this);
-
        // Collider per il layer "end"
 this.physics.add.collider(this.player, this.layerEnd, (_player: any, _tile: any) => {
     this.scene.launch('Keypad');
@@ -91,18 +84,14 @@ this.physics.add.collider(this.player, this.layerEnd, (_player: any, _tile: any)
 this.scene.get('Keypad').events.on('wake', () => {
     // Rimuovi la scena corrente dallo schermo
     this.scene.remove('Keypad');
-
     // Controlla se il giocatore ha inserito correttamente il numero
     if (Keypad.success) {
-        
         this.scene.start('Intro');
     } else {
         this.player.setX(55);
         this.player.setY(55);
     }
 });
-
-
     }
 
     update(time: number, delta: number): void {

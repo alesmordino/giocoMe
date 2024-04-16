@@ -10,10 +10,6 @@ export default class Keypad extends Phaser.Scene {
         super({ key: "Keypad" });
     }
 
-    preload() {
-        // Preload any assets if needed
-    }
-
     create() {
         // Create keypad buttons
         const buttons = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'C', 'Enter'];
@@ -47,10 +43,6 @@ export default class Keypad extends Phaser.Scene {
                 y += buttonHeight + padding;
             }
         });
-    }
-
-    update(time: number, delta: number): void {
-        // Update logic if needed
     }
 
     private onButtonClick(label: string) {

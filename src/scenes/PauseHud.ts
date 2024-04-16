@@ -12,11 +12,10 @@ export default class PauseHud extends Phaser.Scene{
         
     }
 
-    preload() {}
-    
     static setLevel(x:integer){
         PauseHud.level=x;
     };
+    
     create(){ 
         this.scene.bringToTop();
         this.base=this.add.image(1024/2,300+15,"base").setOrigin(0.5,0.5).setDepth(12).setAlpha(1);
@@ -38,8 +37,5 @@ export default class PauseHud extends Phaser.Scene{
             this.scene.start("Intro");
             }
         ).setOrigin(0.5,0.5).setDepth(14).setScale(0.3).setAlpha(1);
-    };
-
-    update(time: number, delta: number): void {
     };
 }

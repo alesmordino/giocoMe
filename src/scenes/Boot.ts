@@ -14,7 +14,6 @@ export default class Boot extends Phaser.Scene {
       "assets/fonts/arcade.png",
       "assets/fonts/arcade.xml"
     );
-
   }
 
   create() {

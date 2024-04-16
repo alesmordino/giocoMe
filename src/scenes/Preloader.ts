@@ -18,9 +18,6 @@ export default class Preloader extends Phaser.Scene {
     this.loadAssets();
   }
 
-  update(time: number, delta: number) { }
-
-
   init() {
     this._image = this.add
       .image(
@@ -65,14 +62,6 @@ export default class Preloader extends Phaser.Scene {
           duration: 500,
           onComplete: () => {
             this.scene.start("Intro");
-            //this.scene.start("GameOver");
-            //this.scene.start("GamePlay");
-            /*
-            this.scene.start("GamePlay");
-            this.scene.start("Hud");
-            this.scene.bringToTop("Hud");
-            */
-
           },
         });
       });
@@ -80,8 +69,6 @@ export default class Preloader extends Phaser.Scene {
 
 
     //Assets Load
-    //--------------------------
-
     //SCRIPT
     if (GameData.script != null)
       GameData.script.forEach((element: ScriptAsset) => {
