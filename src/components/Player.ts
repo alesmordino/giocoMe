@@ -20,8 +20,8 @@ export default class Player extends Phaser.GameObjects.Sprite implements IPlayer
 
 	//array di oggetti per la creazione dell’animazione
 	private _animations: Array<{ key: string, frames: Array<number>, frameRate: number, yoyo: boolean, repeat: number }> = [
-	{ key: "move", frames: [0, 1, 2,3,4,5,6,7,8,9], frameRate: 10, yoyo: false, repeat: -1 },
-	{ key: "idle", frames: [0], frameRate: 1, yoyo: false, repeat: -1 }
+	{ key: "move", frames: [0, 1, 2,3,4,5,6,7,8,9], frameRate: 120, yoyo: false, repeat: -1 },
+	{ key: "idle", frames: [0, 1 ,2,3,4,5,6,7,8,9], frameRate: 30, yoyo: false, repeat: -1 }
 	];
 
     public right:boolean;

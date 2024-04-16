@@ -1,3 +1,4 @@
+import Level1 from "./Level1";
 
 
 export default class PauseHud extends Phaser.Scene{

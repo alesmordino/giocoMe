@@ -108,7 +108,7 @@ this.scene.get('Keypad').events.on('wake', () => {
         }
         this.player.update(time, delta);
 
-        if (this.keyEsc.isDown && this.player.scene != undefined) {
+        if (this.keyEsc.isDown) {
             this.player.pause = true;
             this.music.stop()
             this.scene.launch("PauseHud");
