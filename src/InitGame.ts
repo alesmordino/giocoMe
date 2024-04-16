@@ -3,7 +3,6 @@ import Boot from "./scenes/Boot";
 import Preloader from "./scenes/Preloader";
 import Intro from "./scenes/Intro";
 import { GameData } from "./GameData";
-import LevelSelection from "./scenes/LeverSelection";
 import Level1  from "./scenes/Level1";
 import PauseHud from "./scenes/PauseHud";
 
