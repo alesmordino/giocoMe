@@ -1,5 +1,6 @@
 import Player from "../components/Player";
 import PauseHud from "./PauseHud";
+import Keypad from "./keypad";
 export default class Level1 extends Phaser.Scene {
     private mainCam: Phaser.Cameras.Scene2D.Camera;
     private player: Player;
@@ -11,7 +12,7 @@ export default class Level1 extends Phaser.Scene {
     private layer2: Phaser.Tilemaps.TilemapLayer;
     private layerEnd: Phaser.Tilemaps.TilemapLayer;
     private keyEsc: any;
-
+    
     constructor() {
         super({
             key: "Level1",
@@ -22,7 +23,8 @@ export default class Level1 extends Phaser.Scene {
         PauseHud.setLevel(1);
         this.scene.setVisible(true, "Level1");
         this.scene.setVisible(true, "Keypad");
-        this.player = new Player({ scene: this, x: 55, y: 45, key: "player" });
+        this.scene.add("Keypad", Keypad);
+        this.player = new Player({ scene: this, x: 55, y: 55, key: "player" });
         this.physics.add.existing(this.player);
         this.music = this.sound.add("music0", { loop: true, volume: 0.3 });
         this.music.play();
@@ -78,15 +80,38 @@ export default class Level1 extends Phaser.Scene {
             // Azioni quando il giocatore collide con il layer "collisions"
         }, undefined, this);
 
-        // Collider per il layer "end"
-        this.physics.add.collider(this.player, this.layerEnd, (_player: any, _tile: any) => {
-            console.log("hitted end");
-            this.scene.launch('Keypad');
-            // Azioni quando il giocatore collide con il layer "end"
-        }, undefined, this);
+       // Collider per il layer "end"
+this.physics.add.collider(this.player, this.layerEnd, (_player: any, _tile: any) => {
+    this.scene.launch('Keypad');
+    console.log("hitted end");
+    Level1.completed= true;
+}, undefined, this);
+
+// Aggiungi un listener per l'evento 'wake' sulla scena del tastierino
+this.scene.get('Keypad').events.on('wake', () => {
+    // Rimuovi la scena corrente dallo schermo
+    this.scene.remove('Keypad');
+
+    // Controlla se il giocatore ha inserito correttamente il numero
+    if (Keypad.success) {
+        
+        this.scene.start('Intro');
+    } else {
+        this.player.setX(55);
+        this.player.setY(55);
+    }
+});
+
+
     }
 
     update(time: number, delta: number): void {
+        if (Keypad.success) {
+            // Carica il livello successivo
+            this.player.setX(55);
+            this.player.setY(55);
+            this.scene.start('Intro');
+        }
         if (!this.music.isPlaying && !this.player.pause) {
             this.music.play();
         }
