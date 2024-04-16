@@ -23,7 +23,6 @@ window.addEventListener("load", () => {
       Boot,
       Preloader,
       Intro,
-      LevelSelection,
       Level1,
       PauseHud,
     ],

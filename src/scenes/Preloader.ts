@@ -40,17 +40,14 @@ export default class Preloader extends Phaser.Scene {
       .bitmapText(this.game.canvas.width / 2, 580, "arcade", "", 30)
       .setAlpha(1)
       .setDepth(1001)
-      .setOrigin(0.5, 1);
+      .setOrigin(0.4, 1);
   }
 
   loadAssets(): void {
-
     this.load.on("start", () => { });
-
     this.load.on("fileprogress", (file: any, value: any) => {
-
     });
-
+    
     this.load.on("progress", (value: any) => {
       this._progress.clear();
       this._progress.fillStyle(0xff0000, 1);
