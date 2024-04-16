@@ -86,25 +86,19 @@ this.physics.add.collider(this.player, this.layerEnd, (_player: any, _tile: any)
 this.scene.get('Keypad').events.on('wake', () => {
     // Rimuovi la scena corrente dallo schermo
     this.scene.remove('Keypad');
-    // Controlla se il giocatore ha inserito correttamente il numero
-    if (Keypad.success) {
-        this.scene.start('Intro');
-    } else {
-        this.player.setX(55);
-        this.player.setY(55);
-    }
+
 });
     }
 
     update(time: number, delta: number): void {
         if (Keypad.success) {
+            Keypad.success = false;
             // Carica il livello successivo
             this.player.setX(55);
             this.player.setY(55);
-            this.scene.start('Intro');
-        }
-        if (!this.music.isPlaying && !this.player.pause) {
-            this.music.play();
+            this.scene.stop('Level1');
+            this.music.destroy();
+            this.scene.run('Intro');
         }
         this.player.update(time, delta);
 
