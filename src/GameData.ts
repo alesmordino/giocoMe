@@ -34,18 +34,14 @@ export let GameData: any = {
 ,
   images: [
     {name:"logo-game", path:"assets/images/GameTitle.png"},
-    {name: "bg0", path: "assets/map/sfondo1.jpg" },
+    {name:"log", path:"assets/images/log.png"},
     {name: "principale", path: "assets/images/MENUPRINCIPALE.jpg" },
-    {name: "bg1", path: "assets/map/sfondo1.jpg" },
     {name: "select", path: "assets/map/select.png" },
     { name: "base", path: "assets/images/base.png" },
     { name: "continua", path: "assets/images/contiuna.png" },
     { name: "esci", path: "assets/images/esci.png" },
     { name: "1", path: "assets/images/1.png" },
     { name: "x", path: "assets/images/x.png" },
-    { name: "credits", path: "assets/images/credits.png" },
-    { name: "comeGiocare", path: "assets/images/comegiocare.png" },
-    { name: "youwin", path: "assets/images/youwin.png" }
 
   ],
   atlas: [],
