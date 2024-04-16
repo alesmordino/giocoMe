@@ -27,7 +27,7 @@ export default class Intro extends Phaser.Scene {
     .on("pointerdown",()=>{
       console.log("play");
       music.destroy();
-      this.scene.start("LevelSelection");
+      this.scene.start("Level1");
     });
 
     this.creditsText=this.add.text(this.game.canvas.width/2,300,"Credits",{fontSize:"40px"})
