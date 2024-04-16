@@ -100,6 +100,7 @@ this.scene.get('Keypad').events.on('wake', () => {
             this.music.destroy();
             this.scene.run('Intro');
         }
+      
         this.player.update(time, delta);
 
         if (this.keyEsc.isDown) {
