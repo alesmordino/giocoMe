@@ -22,7 +22,7 @@ export default class Intro extends Phaser.Scene {
     music.play();
     this.logo=this.add.image(this.game.canvas.width/2-9,130,"logo-game").setScale(0.85).setDepth(1);
     this.playText=this.add.text(this.game.canvas.width/2-5,230,"PREMI SULLA PORTA",{fontSize:"34px"})
-    .setColor("White")
+    .setColor("#cccc98")
     .setFontStyle("bold")
     .setDepth(1)
     .setOrigin(0.5,-10.5)
