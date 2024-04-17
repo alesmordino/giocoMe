@@ -51,7 +51,7 @@ export default class Player extends Phaser.GameObjects.Sprite implements IPlayer
 		this._body.setCollideWorldBounds(true).setSize(43,60);
         this._body.setOffset(0,0)
 		this._cursors = this._scene.input.keyboard.createCursorKeys();
-		this.setDepth(10).setScale(0.9);
+		this.setDepth(10).setScale(0.75);
 		this.pause=false;
         this.keyA = this._scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         this.keyD = this._scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
@@ -107,7 +107,7 @@ export default class Player extends Phaser.GameObjects.Sprite implements IPlayer
                         this._body.setVelocityY(-300)
                     }
                 }
-                this.anims.play('move', true);
+                this.anims.play('idle', true);
             }
             this.jmp = true;
 

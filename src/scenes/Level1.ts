@@ -74,6 +74,7 @@ export default class Level1 extends Phaser.Scene {
     create() {
         console.log("create:Level1");
         this.add.image(1024, 0, "log").setOrigin(1, 0).setDepth(14).setScale(0.3).setAlpha(1).setScrollFactor(0);
+        
     }
 
     createCollider() {
@@ -103,12 +104,9 @@ this.scene.get('Keypad').events.on('wake', () => {
          // Esegui un'azione ogni tot millisecondi
          if (this.elapsedTime >= 1000) {
              // Aumenta l'opacità dei layer della mappa
-             this.layer.setAlpha(Math.min(1, this.layer.alpha + 0.3));
-             this.layer2.setAlpha(Math.min(1, this.layer2.alpha + 0.3));
-             this.layerEnd.setAlpha(Math.min(1, this.layerEnd.alpha + 0.3));
- 
-             // Puoi anche aumentare l'opacità dell'intera scena
-             // this.cameras.main.setAlpha(Math.min(1, this.cameras.main.alpha + 0.1));
+             this.layer.setAlpha(Math.min(1, this.layer.alpha + 3));
+             this.layer2.setAlpha(Math.min(1, this.layer2.alpha + 3));
+             this.layerEnd.setAlpha(Math.min(1, this.layerEnd.alpha + 3));
  
              // Resetta il tempo trascorso
              this.elapsedTime = 0;

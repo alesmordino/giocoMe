@@ -19,7 +19,7 @@ export default class Intro extends Phaser.Scene {
       this.scene.start("Level1");
     });
     this.playText=this.add.text(this.game.canvas.width/2-5,230,"PREMI SULLA PORTA",{fontSize:"40px"})
-    .setColor("#cccc98")
+    .setColor("##5f493e")
     .setFontStyle("bold")
     .setDepth(1)
     .setOrigin(0.5,-8)
@@ -29,7 +29,7 @@ export default class Intro extends Phaser.Scene {
       this.scene.start("Level1");
     });
     
-    this.logo=this.add.image(this.game.canvas.width/2-9,130,"logo-game").setScale(0.85).setDepth(1);
+    this.logo=this.add.image(this.game.canvas.width/2-9,80,"logo-game").setScale(0.9).setDepth(1);
 
 
   }
