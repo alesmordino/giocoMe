@@ -12,7 +12,7 @@ export default class Player extends Phaser.GameObjects.Sprite implements IPlayer
 	//variabile locale per la gestione dei tasti cursore come visto nel capitolo 6
 	public _cursors: Phaser.Types.Input.Keyboard.CursorKeys;
 	//variabile locale per impostare la velocità del body
-	private _velocity: number = 500
+	private _velocity: number = 200;
     public pause:boolean;
     //public jmp:boolean;
     private keyA:Phaser.Input.Keyboard.Key;
@@ -20,8 +20,8 @@ export default class Player extends Phaser.GameObjects.Sprite implements IPlayer
 
 	//array di oggetti per la creazione dell’animazione
 	private _animations: Array<{ key: string, frames: Array<number>, frameRate: number, yoyo: boolean, repeat: number }> = [
-	{ key: "move", frames: [0, 1, 2,3,4,5,6,7,8,9], frameRate: 120, yoyo: false, repeat: -1 },
-	{ key: "idle", frames: [0, 1], frameRate: 5, yoyo: false, repeat: -1 }
+	{ key: "move", frames: [0, 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15], frameRate: 10, yoyo: false, repeat: -1 },
+	{ key: "idle", frames: [0], frameRate: 1, yoyo: false, repeat: -1 }
 	];
 
     public right:boolean;
