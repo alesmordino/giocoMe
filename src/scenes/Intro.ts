@@ -18,13 +18,6 @@ export default class Intro extends Phaser.Scene {
       console.log("premi sulla porta per iniziare ");
       this.scene.start("Level1");
     });
-    this.playText=this.add.text(this.game.canvas.width/2, this.game.canvas.height - 100,"PREMI PER ENTRARE",{fontSize:"40px"}).setColor("#cccc98")
-    .setDepth(1)
-    .setFont('bold')
-    .setOrigin(0.5,0.5).on("pointerdown",()=>{
-      console.log("play");
-      this.scene.start("Level1");
-    });
     
     
     this.logo=this.add.image(this.game.canvas.width/2-9,130,"logo-game").setScale(0.85).setDepth(1);
