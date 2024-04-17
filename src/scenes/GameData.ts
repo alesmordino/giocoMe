@@ -55,6 +55,10 @@ export let GameData: any = {
 		{
 		key: "level-1",
 		path: "assets/map/level-1.json",
-		}
+		},
+    {
+      key: "level-2",
+      path: "assets/map/level-2.json",
+    }
 	],
 };
