@@ -45,6 +45,7 @@ export default class Keypad extends Phaser.Scene {
     }
 
     private onButtonClick(label: string) {
+    
         if (label === 'C') {
             // Clear current number
             Keypad.currentNumber = '';

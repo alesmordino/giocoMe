@@ -12,7 +12,7 @@ export default class Player extends Phaser.GameObjects.Sprite implements IPlayer
 	//variabile locale per la gestione dei tasti cursore come visto nel capitolo 6
 	public _cursors: Phaser.Types.Input.Keyboard.CursorKeys;
 	//variabile locale per impostare la velocità del body
-	private _velocity: number = 200;
+	private _velocity: number =500;
     public pause:boolean;
     //public jmp:boolean;
     private keyA:Phaser.Input.Keyboard.Key;
