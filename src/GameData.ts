@@ -18,8 +18,8 @@ export let GameData: any = {
     {
     name: "player",
     path: "assets/images/player.png",
-    width: 32, 
-    height: 60,
+    width: 52, 
+    height: 67,
     frames: 12
     },{
       name: "tilemap-extruded",
@@ -35,7 +35,7 @@ export let GameData: any = {
   images: [
     {name:"logo-game", path:"assets/images/GameTitle.png"},
     {name:"log", path:"assets/images/log.png"},
-    {name: "principale", path: "assets/images/MENUPRINCIPALE.jpg" },
+    {name: "principale", path: "assets/images/MENUPRINCIPALE.png" },
     {name: "select", path: "assets/map/select.png" },
     { name: "base", path: "assets/images/base.png" },
     { name: "continua", path: "assets/images/contiuna.png" },

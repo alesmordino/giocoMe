@@ -3,8 +3,9 @@ import Level1 from "./Level1";
 export default class Keypad extends Phaser.Scene {
     private base: Phaser.GameObjects.Image;
     private static level: number;
-    private currentNumber: string = '';
+    static currentNumber: string = '';
     private currentNumberText: Phaser.GameObjects.Text;
+    static isEnter:boolean;
     static success: boolean;
     constructor() {
         super({ key: "Keypad" });
@@ -15,7 +16,7 @@ export default class Keypad extends Phaser.Scene {
         const buttons = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'C', 'Enter'];
         const buttonWidth = 80;
         const buttonHeight = 80;
-        const startX = this.game.canvas.width / 2;
+        const startX = 430;
         const startY = 200; // Increased startY to make space for currentNumber text
         const padding = 10;
         let x = startX;
@@ -24,7 +25,7 @@ export default class Keypad extends Phaser.Scene {
         const currentNumberRectangle = this.add.rectangle(startX + 90, startY - 90, (buttonWidth + padding) * 3 - 10, buttonHeight, 0x666666)
             .setOrigin(0.5);
 
-        this.currentNumberText = this.add.text(currentNumberRectangle.x, currentNumberRectangle.y, this.currentNumber, { fontSize: '44px', color: '#cccc98' })
+        this.currentNumberText = this.add.text(currentNumberRectangle.x, currentNumberRectangle.y, Keypad.currentNumber, { fontSize: '44px', color: '#cccc98' })
             .setOrigin(0.5);
 
         buttons.forEach((label, index) => {
@@ -44,23 +45,25 @@ export default class Keypad extends Phaser.Scene {
     }
 
     private onButtonClick(label: string) {
+    
         if (label === 'C') {
             // Clear current number
-            this.currentNumber = '';
+            Keypad.currentNumber = '';
         } else if (label === 'Enter') {
             // Print current number to console
-            console.log(this.currentNumber);
-            if(this.currentNumber == "10"){
+            Keypad.isEnter = true;
+            console.log(Keypad.currentNumber);
+            if(Keypad.currentNumber == "10"){
                 console.log("Codice corretto - livello successivo");
                 this.scene.remove("Keypad");
                 Keypad.success = true;
             }
         } else {
             // Concatenate the clicked number
-            this.currentNumber += label;
+            Keypad.currentNumber += label;
         }
         // Update the text to display currentNumber
-        this.currentNumberText.setText(this.currentNumber);
+        this.currentNumberText.setText(Keypad.currentNumber);
         
     }
 }
