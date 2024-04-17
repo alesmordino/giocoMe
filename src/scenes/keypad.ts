@@ -16,7 +16,7 @@ export default class Keypad extends Phaser.Scene {
         const buttons = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'C', 'Enter'];
         const buttonWidth = 80;
         const buttonHeight = 80;
-        const startX = 400;
+        const startX = 430;
         const startY = 200; // Increased startY to make space for currentNumber text
         const padding = 10;
         let x = startX;

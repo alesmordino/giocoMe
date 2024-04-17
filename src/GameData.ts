@@ -18,8 +18,8 @@ export let GameData: any = {
     {
     name: "player",
     path: "assets/images/player.png",
-    width: 32, 
-    height: 60,
+    width: 52, 
+    height: 67,
     frames: 12
     },{
       name: "tilemap-extruded",
