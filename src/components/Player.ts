@@ -109,6 +109,8 @@ export default class Player extends Phaser.GameObjects.Sprite implements IPlayer
                 }
                 this.anims.play('idle', true);
             }
+
+            if(!this._cursors.up.isDown)
             this.jmp = true;
 
             if (!this._cursors.left.isDown && !this._cursors.right.isDown && !this._cursors.up.isDown && !this._cursors.down.isDown&&!this.keyA.isDown&&!this._cursors.space.isDown&&!this.keyD.isDown) {                  
