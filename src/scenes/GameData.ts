@@ -4,7 +4,7 @@ export let GameData: any = {
     gameWidth: 1024,
     gameHeight: 600,
     bgColor: "#ffffff",
-    debug: true,
+    debug: false,
   },
 
   preloader: {
