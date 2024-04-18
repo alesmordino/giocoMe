@@ -32,7 +32,6 @@ export default class Intro extends Phaser.Scene {
 
     this.logo=this.add.image(this.game.canvas.width/2-9,60,"logo-game").setScale(1.2).setDepth(1).setOrigin(0.5);
 
-
   }
 
 
