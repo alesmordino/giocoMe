@@ -44,7 +44,7 @@ export default class Level2 extends Phaser.Scene {
             this.map.heightInPixels
         );
 
-        this.tileset = this.map.addTilesetImage("tilemap-extruded");
+        this.tileset = this.map.addTilesetImage("tilemap-mappa2");
         this.layer = this.map
             .createLayer("world", this.tileset, 0, 0)
             .setDepth(3)
