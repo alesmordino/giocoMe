@@ -1,6 +1,5 @@
 import Level1 from "./Level1";
 
-
 export default class Legenda extends Phaser.Scene{
     private continua :Phaser.GameObjects.Image;
     private esci: Phaser.GameObjects.Image;
@@ -13,8 +12,6 @@ export default class Legenda extends Phaser.Scene{
         });
 
     }
-
-
 
     create(){
         this.scene.bringToTop();
