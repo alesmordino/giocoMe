@@ -126,6 +126,7 @@ this.scene.get('Keypad').events.on('wake', () => {
              Keypad.isEnter = false;
              Keypad.currentNumber = '';
              this.scene.remove('Level2');
+             this.scene.remove("Legenda");
              this.scene.stop('Keypad');
              Level2.music.stop();
              this.scene.run('Intro');
@@ -135,6 +136,7 @@ this.scene.get('Keypad').events.on('wake', () => {
                 this.player.setX(55);
                 this.player.setY(55);
                 this.scene.stop('Keypad');
+                this.scene.stop("Legenda");
                 Keypad.isEnter = false;
                 Keypad.currentNumber = '';
             }
