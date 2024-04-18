@@ -60,7 +60,11 @@ export let GameData: any = {
     {
       name: "music1",
       paths: ["assets/sounds/music1.mp3"],
-      }
+    },
+    {
+    name: "jump",
+    paths: ["assets/sounds/jump.mp3"],
+    }
   ],
   audio: [],
   bitmapfont: [],
