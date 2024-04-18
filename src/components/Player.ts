@@ -16,7 +16,7 @@ export default class Player extends Phaser.GameObjects.Sprite implements IPlayer
     private walkSound: Phaser.Sound.BaseSound;
 
     private _animations: Array<{ key: string, frames: Array<number>, frameRate: number, yoyo: boolean, repeat: number }> = [
-        { key: "move", frames: [0, 1, 2, 3, 4, 5, 6, 7], frameRate: 5, yoyo: false, repeat: -1 },
+        { key: "move", frames: [0, 1, 2, 3, 4, 5, 6, 7], frameRate: 8, yoyo: false, repeat: -1 },
         { key: "idle", frames: [9], frameRate: 1, yoyo: false, repeat: -1 }
     ];
 
@@ -73,7 +73,7 @@ export default class Player extends Phaser.GameObjects.Sprite implements IPlayer
                 this.walkSound.stop();
             }
 
-            if ((this._cursors.up.isDown || this._cursors.space.isDown) && this.jmp && !this.pause) {
+            if (this._cursors.up.isDown && this.jmp && !this.pause) {
                 this.jmp = false;
                 this._body.setVelocityY(-300);
                 this.jumpSound.play();
