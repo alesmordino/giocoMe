@@ -35,7 +35,7 @@ export default class Level1 extends Phaser.Scene {
         this.scene.add("Legenda", Legenda);
         this.player = new Player({ scene: this, x: 55, y: 55, key: "player" });
         this.physics.add.existing(this.player);
-        Level1.music = this.sound.add("music0", { loop: true, volume: 0.3 });
+        Level1.music = this.sound.add("music0", { loop: true, volume: 0.1 });
         Level1.music.play();
         this.map = this.make.tilemap({ key: "level-1" });
         this.keyEsc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
