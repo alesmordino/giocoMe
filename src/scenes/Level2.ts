@@ -13,8 +13,12 @@ export default class Level2 extends Phaser.Scene {
     private layer2: Phaser.Tilemaps.TilemapLayer;
     private layerEnd: Phaser.Tilemaps.TilemapLayer;
     private keyEsc: any;
+    private keyI: any;
+    private isLegendaOpen: boolean;
     private initialAlpha: number = 0.5;
     private elapsedTime: number = 0;
+    private isIKeyDown: boolean = false;
+
     constructor() {
         super({
             key: "Level2",
@@ -25,12 +29,15 @@ export default class Level2 extends Phaser.Scene {
         PauseHud.setLevel(2);
         this.scene.setVisible(true, "Keypad");
         this.scene.add("Keypad", Keypad);
+        this.scene.setVisible(true, "Legenda");
         this.player = new Player({ scene: this, x: 55, y: 55, key: "player" });
         Level2.music = this.sound.add("music1", { loop: true, volume: 0.8 });
         Level2.music.play();
         this.physics.add.existing(this.player);
         this.map = this.make.tilemap({ key: "level-2" });
         this.keyEsc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
+        this.keyI = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.I);
+        this.isLegendaOpen = false;
         this.mainCam = this.cameras.main;
         this.mainCam.setBounds(
             0,
@@ -144,6 +151,39 @@ this.scene.get('Keypad').events.on('wake', () => {
                     this.player.pause = false;
                 }, callbackScope: this
             });
+        }
+        // Nel tuo ciclo di aggiornamento o nel metodo appropriato
+        if (this.keyI.isDown && !this.isIKeyDown && !this.isLegendaOpen) {
+            // Impostare lo stato del tasto a "premuto"
+            this.isIKeyDown = true;
+            this.scene.launch("Legenda");
+            this.isLegendaOpen = true;
+
+            // Avvia un evento di ritardo per reimpostare lo stato del tasto dopo un breve intervallo di tempo
+            this.time.addEvent({
+                delay: 300,
+                loop: false,
+                callback: () => {
+                    this.isIKeyDown = false;
+                },
+                callbackScope: this
+            });
+        } else if (this.keyI.isDown && !this.isIKeyDown && this.isLegendaOpen) {
+            this.isIKeyDown = true;
+            this.scene.stop("Legenda");
+            this.isLegendaOpen = false;
+
+            this.time.addEvent({
+                delay: 300,
+                loop: false,
+                callback: () => {
+                    this.isIKeyDown = false;
+                },
+                callbackScope: this
+            });
+        } else if (!this.keyI.isDown) {
+            // Se il tasto non è premuto, reimposta lo stato del tasto
+            this.isIKeyDown = false;
         }
     }
 }
