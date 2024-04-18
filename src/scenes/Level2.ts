@@ -1,11 +1,10 @@
 import Player from "../components/Player";
 import PauseHud from "./PauseHud";
-import Level2 from "./Level2";
-
-export default class Level1 extends Phaser.Scene {
+import Keypad from "./keypad";
+export default class Level2 extends Phaser.Scene {
     private mainCam: Phaser.Cameras.Scene2D.Camera;
     private player: Player;
-    private log: Phaser.GameObjects.Image;
+    private log :Phaser.GameObjects.Image;
     public static music: Phaser.Sound.BaseSound;
     public static completed: boolean;
     private map: Phaser.Tilemaps.Tilemap;
@@ -16,23 +15,19 @@ export default class Level1 extends Phaser.Scene {
     private keyEsc: any;
     private initialAlpha: number = 0.5;
     private elapsedTime: number = 0;
-
     constructor() {
         super({
-            key: "Level1",
+            key: "Level2",
         });
     }
 
     preload() {
         PauseHud.setLevel(1);
-        this.scene.setVisible(true, "Level1");
-        this.scene.setVisible(true, "Level2");
-        this.scene.add("Level2", Level2);
+        this.scene.setVisible(true, "Keypad");
+        this.scene.add("Keypad", Keypad);
         this.player = new Player({ scene: this, x: 55, y: 55, key: "player" });
         this.physics.add.existing(this.player);
-        Level1.music = this.sound.add("music0", { loop: true, volume: 0.3 });
-        Level1.music.play();
-        this.map = this.make.tilemap({ key: "level-1" });
+        this.map = this.make.tilemap({ key: "level-2" });
         this.keyEsc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
         this.mainCam = this.cameras.main;
         this.mainCam.setBounds(
@@ -65,51 +60,80 @@ export default class Level1 extends Phaser.Scene {
         this.layer2.setCollisionByProperty({ collide: true });
         this.layerEnd.setCollisionByProperty({ collide: true });
         this.createCollider();
-        this.layer.setAlpha(this.initialAlpha);
-        this.layer2.setAlpha(this.initialAlpha);
-        this.layerEnd.setAlpha(this.initialAlpha);
+         // Imposta l'opacità iniziale dei layer della mappa
+         this.layer.setAlpha(this.initialAlpha);
+         this.layer2.setAlpha(this.initialAlpha);
+         this.layerEnd.setAlpha(this.initialAlpha);
 
         this.scene.launch("Overlay");
     }
 
     create() {
-        console.log("create:Level1");
+        console.log("create:Level2");
         this.add.image(1024, 0, "log").setOrigin(1, 0).setDepth(14).setScale(0.3).setAlpha(1).setScrollFactor(0);
+
     }
 
     createCollider() {
+        // Collider per il layer di collisione generale
         this.physics.add.collider(this.player, this.layer2, (_player: any, _tile: any) => {
-            // Actions when player collides with "collisions" layer
+            // Azioni quando il giocatore collide con il layer "collisions"
         }, undefined, this);
+       // Collider per il layer "end"
+this.physics.add.collider(this.player, this.layerEnd, (_player: any, _tile: any) => {
+    this.scene.launch('Keypad');
+    console.log("hitted end");
+    Level2.completed= true;
+}, undefined, this);
 
-        this.physics.add.collider(this.player, this.layerEnd, (_player: any, _tile: any) => {
-            console.log("hitted end");
-            Level1.completed = true;
-        }, undefined, this);
+// Aggiungi un listener per l'evento 'wake' sulla scena del tastierino
+this.scene.get('Keypad').events.on('wake', () => {
+    // Rimuovi la scena corrente dallo schermo
+    this.scene.remove('Keypad');
+
+});
     }
 
     update(time: number, delta: number): void {
-        this.elapsedTime += delta;
+         // Incrementa il tempo trascorso
+         this.elapsedTime += delta;
 
-        if (this.elapsedTime >= 1000) {
-            this.layer.setAlpha(Math.min(1, this.layer.alpha + 3));
-            this.layer2.setAlpha(Math.min(1, this.layer2.alpha + 3));
-            this.layerEnd.setAlpha(Math.min(1, this.layerEnd.alpha + 3));
+         // Esegui un'azione ogni tot millisecondi
+         if (this.elapsedTime >= 1000) {
+             // Aumenta l'opacità dei layer della mappa
+             this.layer.setAlpha(Math.min(1, this.layer.alpha + 3));
+             this.layer2.setAlpha(Math.min(1, this.layer2.alpha + 3));
+             this.layerEnd.setAlpha(Math.min(1, this.layerEnd.alpha + 3));
 
-            this.elapsedTime = 0;
-        }
+             // Resetta il tempo trascorso
+             this.elapsedTime = 0;
+         }
 
-        if (Level1.completed) {
-            this.scene.stop('Level1');
-            Level1.completed= false;
-            this.scene.run('Level2');
+        if (Keypad.success) {
+            Keypad.success = false;
+            // Carica il livello successivo
+            this.player.setX(55);
+            this.player.setY(55);
+             Keypad.isEnter = false;
+             Keypad.currentNumber = '';
+             this.scene.remove('Level2');
+             this.scene.stop('Keypad');
+             this.scene.run('Intro');
+             Level2.completed = false;
+        }else{
+            if(Level2.completed && Keypad.currentNumber != "10" && Keypad.isEnter){
+                this.player.setX(55);
+                this.player.setY(55);
+                this.scene.stop('Keypad');
+                Keypad.isEnter = false;
+                Keypad.currentNumber = '';
+            }
         }
 
         this.player.update(time, delta);
 
         if (this.keyEsc.isDown) {
             this.player.pause = true;
-            Level1.music.stop()
             this.scene.launch("PauseHud");
             this.scene.pause();
             this.time.addEvent({

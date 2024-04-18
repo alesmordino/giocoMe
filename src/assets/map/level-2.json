@@ -102,11 +102,11 @@
         {
          "columns":47,
          "firstgid":1,
-         "image":"..\/..\/Downloads\/tilemap-mappa2.png",
+         "image":"tilemap-extruded.png",
          "imageheight":640,
          "imagewidth":1600,
          "margin":1,
-         "name":"tilemap-mappa2",
+         "name":"tilemap-extruded",
          "spacing":2,
          "tilecount":846,
          "tileheight":32,
