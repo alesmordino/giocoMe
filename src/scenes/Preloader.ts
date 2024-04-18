@@ -49,12 +49,12 @@ export default class Preloader extends Phaser.Scene {
       this._progress.clear();
       this._progress.fillStyle(0xff0000, 1);
       this._progress.fillRect(0, 530, GameData.globals.width * value, 70);
-      this._loading.setText("Loading...");
+      this._loading.setText("Caricamento...");
     });
     
     this.load.on("complete", () => {
       console.log("complete")
-      this._loading.setText("Tap to start!");
+      this._loading.setText("Clicca per iniziare!");
       this.input.once("pointerdown", () => {
         this.tweens.add({
           targets: [this._image, this._loading],

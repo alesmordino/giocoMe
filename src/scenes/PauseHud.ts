@@ -36,10 +36,10 @@ export default class PauseHud extends Phaser.Scene{
             this.continua.setAlpha(0);
             this.esci.setAlpha(0);
             this.scene.setVisible(false,"Overlay");
-            this.scene.remove(false,"Level1");
-
-            this.scene.remove(false,"Level2");
-            this.scene.remove("Keypad");
+            this.scene.stop("Level1");
+            this.scene.remove("Level2");
+            this.scene.stop("Keypad");
+            this.scene.remove("Legenda")
             this.scene.start("Intro");
             }
         ).setOrigin(0.5,0.5).setDepth(14).setScale(0.3).setAlpha(1);

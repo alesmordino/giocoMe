@@ -1,3 +1,4 @@
+import Level1 from "./Level1";
 export default class Intro extends Phaser.Scene {
 
   private logo:Phaser.GameObjects.Image;
@@ -12,7 +13,7 @@ export default class Intro extends Phaser.Scene {
   }
 
   create() {
-    
+
     let bg =this.add.image(0, 0,"principale").setOrigin(0,0).setDepth(0).setDisplaySize(this.game.canvas.width, this.game.canvas.height).setInteractive().on(
       "pointerdown",()=>{
       console.log("premi sulla porta per iniziare ");
@@ -28,7 +29,7 @@ export default class Intro extends Phaser.Scene {
       console.log("play");
       this.scene.start("Level1");
     });
-    
+
     this.logo=this.add.image(this.game.canvas.width/2-9,60,"logo-game").setScale(1.2).setDepth(1).setOrigin(0.5);
 
 
