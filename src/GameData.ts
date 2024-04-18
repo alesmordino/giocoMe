@@ -29,7 +29,14 @@ export let GameData: any = {
       spacing: 2,
       margin: 1,
     },
-    
+    {
+      name: "tilemap-mappa2",
+      path: "assets/map/tilemap-mappa2.png",
+      width: 32,
+      height: 32,
+      spacing: 2,
+      margin: 1,
+    }
   ]
 ,
   images: [
