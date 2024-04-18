@@ -46,7 +46,6 @@ export let GameData: any = {
     { name: "base", path: "assets/images/base.png" },
     { name: "continua", path: "assets/images/contiuna.png" },
     { name: "esci", path: "assets/images/esci.png" },
-    { name: "1", path: "assets/images/1.png" },
     { name: "x", path: "assets/images/x.png" },
 
   ],

@@ -28,7 +28,7 @@ export default class Player extends Phaser.GameObjects.Sprite implements IPlayer
         this.create();
         this.createAnimations();
         this.jumpSound = this.scene.sound.add("jump", { loop: false, volume: 0.8 });
-        this.walkSound = this.scene.sound.add("walk", { loop: true, volume: 0.5 });
+        this.walkSound = this.scene.sound.add("walk", { loop: false, volume: 0.5 });
     }
 
     create() {

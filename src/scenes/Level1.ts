@@ -16,7 +16,6 @@ export default class Level1 extends Phaser.Scene {
     private keyEsc: any;
     private keyI: any;
     private isLegendaOpen: boolean;
-    private initialAlpha: number = 0.5;
     private elapsedTime: number = 0;
     private isIKeyDown: boolean = false;
 
@@ -42,6 +41,7 @@ export default class Level1 extends Phaser.Scene {
         this.keyI = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.I);
         this.isLegendaOpen = false;
         this.mainCam = this.cameras.main;
+
         this.mainCam.setBounds(
             0,
             0,
@@ -72,9 +72,7 @@ export default class Level1 extends Phaser.Scene {
         this.layer2.setCollisionByProperty({ collide: true });
         this.layerEnd.setCollisionByProperty({ collide: true });
         this.createCollider();
-        this.layer.setAlpha(this.initialAlpha);
-        this.layer2.setAlpha(this.initialAlpha);
-        this.layerEnd.setAlpha(this.initialAlpha);
+
 
         this.scene.launch("Overlay");
     }
@@ -96,15 +94,7 @@ export default class Level1 extends Phaser.Scene {
     }
 
     update(time: number, delta: number): void {
-        this.elapsedTime += delta;
 
-        if (this.elapsedTime >= 1000) {
-            this.layer.setAlpha(Math.min(1, this.layer.alpha + 3));
-            this.layer2.setAlpha(Math.min(1, this.layer2.alpha + 3));
-            this.layerEnd.setAlpha(Math.min(1, this.layerEnd.alpha + 3));
-
-            this.elapsedTime = 0;
-        }
 
         if (Level1.completed) {
             this.scene.stop('Level1');
