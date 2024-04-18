@@ -17,6 +17,8 @@ export default class Intro extends Phaser.Scene {
     let bg =this.add.image(0, 0,"principale").setOrigin(0,0).setDepth(0).setDisplaySize(this.game.canvas.width, this.game.canvas.height).setInteractive().on(
       "pointerdown",()=>{
       console.log("premi sulla porta per iniziare ");
+      if(Level1.music.isPlaying)
+        Level1.music.stop();
       this.scene.start("Level1");
     });
     this.playText=this.add.text(this.game.canvas.width/2-5,230,"PREMI SULLA PORTA",{fontSize:"40px"})
@@ -27,6 +29,8 @@ export default class Intro extends Phaser.Scene {
     .setInteractive()
     .on("pointerdown",()=>{
       console.log("play");
+      if(Level1.music.isPlaying)
+        Level1.music.stop();
       this.scene.start("Level1");
     });
 

@@ -49,13 +49,18 @@ export let GameData: any = {
     { name: "esci", path: "assets/images/esci.png" },
     { name: "1", path: "assets/images/1.png" },
     { name: "x", path: "assets/images/x.png" },
+    { name: "legenda", path: "assets/images/legenda.png" },
 
   ],
   atlas: [],
   sounds: [{
     name: "music0",
     paths: ["assets/sounds/music0.mp3"],
-    }
+    },
+    {
+      name: "music1",
+      paths: ["assets/sounds/music1.mp3"],
+      }
   ],
   audio: [],
   bitmapfont: [],

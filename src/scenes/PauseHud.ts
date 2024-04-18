@@ -5,7 +5,7 @@ export default class PauseHud extends Phaser.Scene{
     private continua :Phaser.GameObjects.Image;
     private esci: Phaser.GameObjects.Image;
     private base: Phaser.GameObjects.Image;
-
+    private currentLevl : String;
     private static level:integer;
     constructor(level:integer) {
         super({
@@ -24,7 +24,7 @@ export default class PauseHud extends Phaser.Scene{
 
         this.continua=this.add.image(1024/2,300-20,"continua").setInteractive().on("pointerdown",()=>{    
             Level1.music.play();        
-            this.scene.resume("Level1");
+            this.scene.resume("Level" + PauseHud.level);
             this.base.setAlpha(0);
             this.continua.setAlpha(0);
             this.esci.setAlpha(0);

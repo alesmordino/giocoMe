@@ -22,10 +22,12 @@ export default class Level2 extends Phaser.Scene {
     }
 
     preload() {
-        PauseHud.setLevel(1);
+        PauseHud.setLevel(2);
         this.scene.setVisible(true, "Keypad");
         this.scene.add("Keypad", Keypad);
         this.player = new Player({ scene: this, x: 55, y: 55, key: "player" });
+        Level2.music = this.sound.add("music1", { loop: true, volume: 0.8 });
+        Level2.music.play();
         this.physics.add.existing(this.player);
         this.map = this.make.tilemap({ key: "level-2" });
         this.keyEsc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
@@ -118,6 +120,7 @@ this.scene.get('Keypad').events.on('wake', () => {
              Keypad.currentNumber = '';
              this.scene.remove('Level2');
              this.scene.stop('Keypad');
+             Level2.music.stop();
              this.scene.run('Intro');
              Level2.completed = false;
         }else{
