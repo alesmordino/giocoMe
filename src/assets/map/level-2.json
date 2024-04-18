@@ -25,6 +25,7 @@
          "height":19,
          "id":1,
          "name":"world",
+         
          "opacity":1,
          "type":"tilelayer",
          "visible":true,
