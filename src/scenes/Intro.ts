@@ -22,7 +22,7 @@ export default class Intro extends Phaser.Scene {
       this.scene.start("Level1");
     });
     this.playText=this.add.text(this.game.canvas.width/2-5,230,"PREMI SULLA PORTA",{fontSize:"40px"})
-    .setColor("##5f493e")
+    .setColor("#e6080f")
     .setFontStyle("bold")
     .setDepth(1)
     .setOrigin(0.5,-8)
