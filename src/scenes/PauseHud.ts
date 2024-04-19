@@ -47,8 +47,10 @@ export default class PauseHud extends Phaser.Scene{
             this.scene.remove("Legenda")
             this.scene.remove("PortaScene");
             this.scene.start("Intro");
-            Level1.music.stop();
-            Level2.music.stop();
+            if(PauseHud.level==1){
+                Level1.music.play();}
+                else if(PauseHud.level==2)
+                    Level2.music.play();
             }
         ).setOrigin(0.5,0.5).setDepth(14).setScale(0.3).setAlpha(1);
     };

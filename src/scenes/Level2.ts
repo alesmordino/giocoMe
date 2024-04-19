@@ -1,4 +1,5 @@
 import Player from "../components/Player";
+import Level3 from "./Level3";
 import PauseHud from "./PauseHud";
 import Keypad from "./keypad";
 export default class Level2 extends Phaser.Scene {
@@ -29,6 +30,8 @@ export default class Level2 extends Phaser.Scene {
         PauseHud.setLevel(2);
         this.scene.setVisible(true, "Keypad");
         this.scene.add("Keypad", Keypad);
+        this.scene.setVisible(true, "Level3");
+        this.scene.add("Level3", Level3);
         this.scene.setVisible(true, "Legenda");
         this.player = new Player({ scene: this, x: 55, y: 55, key: "player" });
         Level2.music = this.sound.add("music1", { loop: true, volume: 0.8 });
@@ -148,7 +151,7 @@ this.scene.get('Keypad').events.on('wake', () => {
              this.scene.remove("Legenda");
              this.scene.stop('Keypad');
              Level2.music.stop();
-             this.scene.run('Intro');
+             this.scene.run('Level3');
              Level2.completed = false;
         }else{
             if(Level2.completed && Keypad.currentNumber != "10" && Keypad.isEnter){
