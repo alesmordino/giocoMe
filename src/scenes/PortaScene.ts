@@ -11,7 +11,7 @@ export default class PortaScene extends Phaser.Scene {
 
     create() {
         console.log("Porta Scene : create");
-        const video = this.add.video(400, 300, 'introVideo');
+        const video = this.add.video(500, 300, 'introVideo');
         video.play();
 
         // Passa alla scena del livello 1 dopo un secondo
